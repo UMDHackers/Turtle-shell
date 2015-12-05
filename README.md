@@ -1,2 +1,2 @@
 # Turtle-shell
-Shell for drawing in python!
+Shell for drawing in some language!
