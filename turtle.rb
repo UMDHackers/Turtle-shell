@@ -1,3 +1,14 @@
+def new_file(command_path)
+ if command_path.size() > 2 || command_path.size() == 1 
+   puts "Incorrect new usage, see help for correct usage"
+   return 
+ end
+ return 
+end
+
+
+
+
 loop do
  #main
  print "turtle> "
@@ -12,12 +23,19 @@ loop do
    next
  elsif first == "new"
    puts "new"
+   new_file(command_array)
    next
  elsif first == "quit"
    puts "quit"
    break
  elsif first == nil
    next
+ elsif first == "line"
+   puts "line"
+ elsif first == "size"
+   puts "size"
+ elsif first == "color"
+   puts "color"
  else 
    puts "invalid command: #{command}"
  end
