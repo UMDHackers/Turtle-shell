@@ -1,5 +1,7 @@
+#/usr/bin/env ruby
+
 def new_file(command_path)
- if command_path.size() > 2 || command_path.size() == 1 
+ if command_path.size() > 2 
    puts "Incorrect new usage, see help for correct usage"
    return 
  end
@@ -19,7 +21,7 @@ loop do
  command_array = command.split
  first = command_array[0]
  if first == "help"
-   puts "new 'filename':     create a filename to draw on"
+   puts "new:     creates a new screen to draw on"
    next
  elsif first == "new"
    puts "new"
