@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title> Turtle shell </title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script>
+		function get(cmd) {
+			if(event.keyCode == 13) {
+				//alert(cmd.value);
+				document.getElementById("log").value += "turtle> " + cmd.value + "\n";
+				document.getElementById("shell").value = "";
+
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<textarea id = "log">
+		
+	
+	</textarea>
+	<br>
+	  <label for = "shell">turtle> </label>
+	  <input type="text" id = "shell" onkeydown = "get(this)"><br>
+
+</body>
+</html>
