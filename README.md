@@ -1,2 +1,4 @@
 # Turtle-shell
-## This project is put on hold for now, please check back later for updates! :)
+## A core HTML/JAVASCRIPT/CSS terminal like graphic program
+
+
