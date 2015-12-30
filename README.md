@@ -1,4 +1,4 @@
 # Turtle-shell
-A core HTML/JAVASCRIPT/CSS terminal like graphic program
-
+[Demo](http://parthgdesai.me/turtle.html)
+Using HTML5, CSS3, JAVASCRIPT, BOOTSTRAP
 
