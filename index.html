@@ -4,7 +4,25 @@
 
 <head>
 	<title> Turtle shell </title>
-	
+	<!-- Latest compiled and minified CSS -->
+	<style>	
+		body {
+			font-family: "Arial", Helvetica, sans-serif;
+		
+		}
+		body h1 {
+			text-align: center;
+			
+		}
+		.rig {
+			display: inline-block;
+			margin: 0 1.5%;
+		}
+		.lef {
+			float: left;
+			margin: 0 1.5%;
+		}
+	</style>
 	<script>
 		var color = "black";
 		var set_of_color = {"black":true, "blue":true, "green":true, "red":true, "purple":true, "yellow":true};
@@ -150,23 +168,29 @@
 		}
 	</script>
 	<style>
-		
-	
 	
 	</style>
 </head>
 
 <body>
-	<textarea readonly id = "log" rows="30" cols="70"></textarea>
-	<br>
-	  <label for = "shell">turtle> </label>
-	  <input type="text" id = "shell" onkeydown = "get(this)" autofocus><br>
-	<canvas width="500" height="500" style="border:1px solid #d3d3d3;" id = "myCanvas">
+		<h1>Turtle shell</h1>
+		<div class = "lef">
+			<canvas width="500" height="500" style="border:1px solid #d3d3d3;" id = "myCanvas"></canvas>
+		</div>
 		
-	
-	
-	
-	
-	</canvas>
+		<div class = "rig">
+			<textarea readonly id = "log" rows="30" cols="70"></textarea>
+			<br>
+			<label for = "shell">turtle> </label>
+			<input type="text" id = "shell" onkeydown = "get(this)" autofocus><br>
+			
+		</div>
+		<br>		<br>		<br>		<br>		<br>		<br>		<br>
+		<p>
+			by: parth desai
+		</p>
 </body>
+
+
+
 </html>
