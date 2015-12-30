@@ -9,22 +9,30 @@
 		var color = "black";
 		var set_of_color = {"black":true, "blue":true, "green":true, "red":true, "purple":true, "yellow":true};
 		var size = 1;
+		var x1 = 0, y1 = 0, x2 = 0, y2 = 0;		
 		function get(cmd) {
 			if(event.keyCode == 13) {
 				//alert(cmd.value);
+
+				var c = document.getElementById("myCanvas");
+				var	ctx = c.getContext("2d");
 				var command = cmd.value.trim();
 				var textarea = document.getElementById("log");
 				textarea.value += "turtle> " + command + "\n";
 				document.getElementById("shell").value = "";
 				var command_array = command.split(" ");
 				if (command == "help") {
-					textarea.value += "thickness '(+|-)num' - line thickness would go up or down by number\n\ncircle 'radius' -  circle of a certian radius will be picked\n\ncolor 'color' -  color of the line\n\nforward 'steps' -  a line will go staright steps amount of times\n\nhelp -  this page\n";
+					textarea.value += "thickness '(+|-)num' - line thickness would go up or down by number\n\ncircle 'radius' -  circle of a certian radius will be picked\n\ncolor 'color' -  color of the line\n\nforward 'steps' -  move to the right steps worth\n\nhelp -  this page\n\nup 'steps' -  move up steps worth\n\ndown 'steps' -  move down steps worth\n\nback 'steps' - move back steps worth\n";
 				}
 				else if (command == "") {
 					
 				}
 				else if (command == "clear") {
-					textarea.value = "";
+					ctx.clearRect(0, 0, c.width, c.height);
+					x1 = 0;
+					y1 = 0; 
+					x2 = 0;
+					y2 = 0;	
 				}
 				
 				else if (command_array[0] == "color") {
@@ -47,10 +55,96 @@
 						size = user_size;
 					}
 				}
-				
-				else {
-					textarea.value += "Invalid command " + command + "\n";
+				else if (command_array[0] == "forward") {
+					var steps = parseInt(command_array[1]);
+					if (command_array.length > 2 || command_array.length == 1) {
+						textarea.value += "Incorrect usage of forward, please look at help for information\n";
+					}
+					else {
+						x2 = x1;
+						x1 = x1 + steps;
+						y2 = y1;
+						ctx.beginPath();
+						ctx.strokeStyle = color;
+						ctx.lineWidth = size;
+						ctx.moveTo(x2, y2);
+						ctx.lineTo(x1, y1);
+						ctx.stroke();
+					}
+					
 				}
+				else if (command_array[0] == "back") {
+					var steps = parseInt(command_array[1]);
+					if (command_array.length > 2 || command_array.length == 1) {
+						textarea.value += "Incorrect usage of back, please look at help for information\n";
+					}
+					else {
+						x2 = x1;
+						x1 = x1 - steps;
+						y2 = y1;
+						ctx.beginPath();
+						ctx.strokeStyle = color;
+						ctx.lineWidth = size;
+						ctx.moveTo(x2, y2);
+						ctx.lineTo(x1, y1);
+						ctx.stroke();
+					}
+					
+				}
+				else if (command_array[0] == "up") {
+					var steps = parseInt(command_array[1]);
+					if (command_array.length > 2 || command_array.length == 1) {
+						textarea.value += "Incorrect usage of up, please look at help for information\n";
+					}
+					else {
+						y2 = y1;
+						y1 = y1 - steps;
+						x2 = x1;
+						ctx.beginPath();
+						ctx.strokeStyle = color;
+						ctx.lineWidth = size;
+						ctx.moveTo(x2, y2);
+						ctx.lineTo(x1, y1);
+						ctx.stroke();
+					}
+					
+				}
+				else if (command_array[0] == "down") {
+					var steps = parseInt(command_array[1]);
+					if (command_array.length > 2 || command_array.length == 1) {
+						textarea.value += "Incorrect usage of thinkness, please look at help for information\n";
+					}
+					else {
+						y2 = y1;
+						y1 = y1 + steps;
+						x2 = x1;
+						ctx.beginPath();
+						ctx.strokeStyle = color;
+						ctx.lineWidth = size;
+						ctx.moveTo(x2, y2);
+						ctx.lineTo(x1, y1);
+						ctx.stroke();
+					}
+					
+				}
+				else if (command_array[0] == "circle") {
+					var rad = parseInt(command_array[1]);
+					if (command_array.length > 2 || command_array.length == 1) {
+						textarea.value += "Incorrect usage of circle, please look at help for information\n";
+					}
+					else {
+						ctx.beginPath();
+						ctx.strokeStyle = color;
+						ctx.lineWidth = size;
+						ctx.arc(x1,y1,rad,0,2 * Math.PI);
+						ctx.stroke();
+					}
+				
+				}
+				else {
+					textarea.value += "Invalid command '" + command + "'\n";
+				}
+				
 				document.getElementById("log").scrollTop = document.getElementById("log").scrollHeight;
 			}
 		}
@@ -67,8 +161,8 @@
 	<br>
 	  <label for = "shell">turtle> </label>
 	  <input type="text" id = "shell" onkeydown = "get(this)" autofocus><br>
-	<canvas>
-	
+	<canvas width="500" height="500" style="border:1px solid #d3d3d3;" id = "myCanvas">
+		
 	
 	
 	
